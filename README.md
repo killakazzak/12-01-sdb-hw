@@ -1,41 +1,35 @@
 # Домашнее задание к занятию "`GitLab`" - `Тен Денис`
 
+### Легенда
+
+Заказчик передал вам [файл в формате Excel](https://github.com/netology-code/sdb-homeworks/blob/main/resources/hw-12-1.xlsx), в котором сформирован отчёт. 
+
+На основе этого отчёта нужно выполнить следующие задания.
 
 ### Задание 1
 
-**Что нужно сделать:**
+Опишите не менее семи таблиц, из которых состоит база данных:
 
-1. Разверните GitLab локально, используя Vagrantfile и инструкцию, описанные в [этом репозитории](https://github.com/netology-code/sdvps-materials/tree/main/gitlab).   
-2. Создайте новый проект и пустой репозиторий в нём.
-3. Зарегистрируйте gitlab-runner для этого проекта и запустите его в режиме Docker. Раннер можно регистрировать и запускать на той же виртуальной машине, на которой запущен GitLab.
+- какие данные хранятся в этих таблицах;
+- какой тип данных у столбцов в этих таблицах, если данные хранятся в PostgreSQL.
 
-В качестве ответа в репозиторий шаблона с решением добавьте скриншоты с настройками раннера в проекте.
+Приведите решение к следующему виду:
 
----
+Сотрудники (
 
-### Решение Задание 1
+- идентификатор, первичный ключ, serial,
+- фамилия varchar(50),
+- ...
+- идентификатор структурного подразделения, внешний ключ, integer).
 
-#### Установка Virtualbox
-```
-echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" | sudo tee -a /etc/apt/sources.list
-wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-sudo apt update
-sudo apt install virtualbox
-vboxmanage --version
-```
-![image](https://github.com/killakazzak/8-3-gitlab-hw/assets/32342205/8c9480c9-bcc7-4e68-b8c5-e8dea537f963)
+## Дополнительные задания (со звёздочкой*)
+Эти задания дополнительные, то есть не обязательные к выполнению, и никак не повлияют на получение вами зачёта по этому домашнему заданию. Вы можете их выполнить, если хотите глубже шире разобраться в материале.
 
-#### Установка Vagrant
-```
-wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-sudo apt update && sudo apt install vagrant
-vagrant --version
-```
-![image](https://github.com/killakazzak/8-3-gitlab-hw/assets/32342205/8540f4d8-6f00-4e69-a3d7-9047085100d7)
 
-#### Установка Gitlab
+### Задание 2*
+
+Перечислите, какие, на ваш взгляд, в этой денормализованной таблице встречаются функциональные зависимости и какие правила вывода нужно применить, чтобы нормализовать данные.
+
 
 Модифицированный [Vagranfile](https://github.com/killakazzak/8-2-sdvps-materials-hw/blob/main/gitlab/Vagrantfile)
 
